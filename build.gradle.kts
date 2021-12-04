@@ -1,0 +1,21 @@
+plugins {
+    val kotlinVersion = "1.5.10"
+    kotlin("jvm") version kotlinVersion
+    kotlin("plugin.serialization") version kotlinVersion
+
+    id("net.mamoe.mirai-console") version "2.8.2"
+}
+
+group = "com.github.samarium150"
+version = "1.0.0"
+
+repositories {
+    mavenLocal()
+    maven("https://maven.aliyun.com/repository/public")
+    mavenCentral()
+}
+
+tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().all {
+    kotlinOptions.freeCompilerArgs += "-Xopt-in=kotlin.RequiresOptIn"
+    kotlinOptions.jvmTarget = "11"
+}
