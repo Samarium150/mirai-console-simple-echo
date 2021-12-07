@@ -14,11 +14,11 @@ import net.mamoe.mirai.event.globalEventChannel
 import net.mamoe.mirai.message.data.contentsSequence
 import net.mamoe.mirai.utils.info
 
-object MiraiConsoleSimpleEcho: KotlinPlugin(
+object MiraiConsoleSimpleEcho : KotlinPlugin(
     JvmPluginDescription(
         id = "com.github.samarium150.mirai-console-simple-echo",
         name = "MiraiConsoleSimpleEcho",
-        version = "1.0.0",
+        version = "1.0.1",
     ) {
         author("Samarium")
         info("简单复读插件")
@@ -46,7 +46,8 @@ object MiraiConsoleSimpleEcho: KotlinPlugin(
             if (contents.startsWith(commandPrefix)) return@call
             if (contents == prev && sender.user?.id != prevSender) {
                 counter++
-            } else {
+            } else if (contents != prev) {
+                counter = 1
                 echoed = false
             }
             prev = contents
