@@ -1,3 +1,10 @@
+<a name="1.0.1"></a>
+# 1.0.1 (2021/12/07)
+
+
+## Bug Fixes
+
+* correctly clear counter ([349cbdac](https://github.com/Samarium150/mirai-console-simple-echo/commits/349cbdac))
 <a name="1.0.0"></a>
 ## 1.0.0 (2021/12/04)
 
