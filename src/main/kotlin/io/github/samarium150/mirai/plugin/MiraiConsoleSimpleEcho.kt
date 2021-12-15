@@ -1,7 +1,6 @@
-package com.github.samarium150
+package io.github.samarium150.mirai.plugin
 
-import com.github.samarium150.MiraiConsoleSimpleEchoConfig.filter
-import com.github.samarium150.MiraiConsoleSimpleEchoConfig.threshold
+import io.github.samarium150.mirai.plugin.config.PluginConfig
 import kotlinx.coroutines.CoroutineExceptionHandler
 import net.mamoe.mirai.console.command.CommandManager.INSTANCE.commandPrefix
 import net.mamoe.mirai.console.command.CommandSender.Companion.toCommandSender
@@ -17,8 +16,8 @@ import net.mamoe.mirai.utils.info
 object MiraiConsoleSimpleEcho : KotlinPlugin(
     JvmPluginDescription(
         id = "com.github.samarium150.mirai-console-simple-echo",
-        name = "MiraiConsoleSimpleEcho",
-        version = "1.0.1",
+        name = "Simple Echo",
+        version = "1.1.0",
     ) {
         author("Samarium")
         info("简单复读插件")
@@ -31,7 +30,11 @@ object MiraiConsoleSimpleEcho : KotlinPlugin(
     private lateinit var listener: Listener<MessageEvent>
 
     override fun onEnable() {
-        MiraiConsoleSimpleEchoConfig.reload()
+
+        PluginConfig.reload()
+        val threshold = PluginConfig.threshold
+        val filter = PluginConfig.filter
+
         listener = globalEventChannel().subscribeAlways(
             MessageEvent::class,
             CoroutineExceptionHandler { _, throwable ->
@@ -53,18 +56,19 @@ object MiraiConsoleSimpleEcho : KotlinPlugin(
             prev = contents
             prevSender = sender.user?.id
             if (threshold in 1..counter && !echoed &&
-                (filter.isEmpty() || (filter.isNotEmpty() && contents in filter))) {
+                (filter.isEmpty() || contents in filter)) {
                 sender.sendMessage(message)
                 logger.info("已复读消息：${contents}")
                 counter = 1
                 echoed = true
             }
         }
-        logger.info { "Plugin mirai-console-simple-echo loaded" }
+
+        logger.info { "Plugin loaded" }
     }
 
     override fun onDisable() {
         listener.cancel()
-        logger.info { "Plugin mirai-console-simple-echo unloaded" }
+        logger.info { "Plugin unloaded" }
     }
 }
