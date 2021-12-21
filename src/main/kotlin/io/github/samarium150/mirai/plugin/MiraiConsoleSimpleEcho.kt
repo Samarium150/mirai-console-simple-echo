@@ -15,9 +15,9 @@ import net.mamoe.mirai.utils.info
 
 object MiraiConsoleSimpleEcho : KotlinPlugin(
     JvmPluginDescription(
-        id = "com.github.samarium150.mirai-console-simple-echo",
+        id = "io.github.samarium150.mirai.plugin.mirai-console-simple-echo",
         name = "Simple Echo",
-        version = "1.1.0",
+        version = "1.1.1",
     ) {
         author("Samarium")
         info("简单复读插件")
