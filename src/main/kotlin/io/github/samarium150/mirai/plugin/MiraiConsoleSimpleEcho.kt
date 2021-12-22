@@ -2,7 +2,7 @@ package io.github.samarium150.mirai.plugin
 
 import io.github.samarium150.mirai.plugin.config.PluginConfig
 import kotlinx.coroutines.CoroutineExceptionHandler
-import net.mamoe.mirai.console.command.CommandManager.INSTANCE.commandPrefix
+import net.mamoe.mirai.console.command.CommandManager
 import net.mamoe.mirai.console.command.CommandSender.Companion.toCommandSender
 import net.mamoe.mirai.console.plugin.jvm.JvmPluginDescription
 import net.mamoe.mirai.console.plugin.jvm.KotlinPlugin
@@ -11,13 +11,12 @@ import net.mamoe.mirai.event.Listener
 import net.mamoe.mirai.event.events.MessageEvent
 import net.mamoe.mirai.event.globalEventChannel
 import net.mamoe.mirai.message.data.contentsSequence
-import net.mamoe.mirai.utils.info
 
 object MiraiConsoleSimpleEcho : KotlinPlugin(
     JvmPluginDescription(
         id = "io.github.samarium150.mirai.plugin.mirai-console-simple-echo",
         name = "Simple Echo",
-        version = "1.1.1",
+        version = "1.1.2",
     ) {
         author("Samarium")
         info("简单复读插件")
@@ -46,7 +45,11 @@ object MiraiConsoleSimpleEcho : KotlinPlugin(
                 this.toCommandSender()
             }.getOrNull() ?: return@call
             val contents = message.contentsSequence().joinToString("")
-            if (contents.startsWith(commandPrefix)) return@call
+            if (contents.startsWith(CommandManager.INSTANCE.commandPrefix)) return@call
+            CommandManager.INSTANCE.allRegisteredCommands.forEach {
+                if (contents.startsWith(it.primaryName)) return@call
+                for (name in it.secondaryNames) if (contents.startsWith(name)) return@call
+            }
             if (contents == prev && sender.user?.id != prevSender) {
                 counter++
             } else if (contents != prev) {
@@ -64,11 +67,11 @@ object MiraiConsoleSimpleEcho : KotlinPlugin(
             }
         }
 
-        logger.info { "Plugin loaded" }
+        logger.info("Plugin loaded")
     }
 
     override fun onDisable() {
         listener.cancel()
-        logger.info { "Plugin unloaded" }
+        logger.info("Plugin unloaded")
     }
 }
