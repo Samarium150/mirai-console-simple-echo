@@ -1,3 +1,10 @@
+<a name="1.1.2"></a>
+# 1.1.2 (2021/12/22)
+
+
+## Bug Fixes
+
+* skip echoing commands ([9c60ce5e](https://github.com/Samarium150/mirai-console-simple-echo/commits/9c60ce5e))
 <a name="1.1.1"></a>
 # 1.1.1 (2021/12/21)
 
