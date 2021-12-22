@@ -1,3 +1,10 @@
+<a name="1.1.3"></a>
+# 1.1.3 (2021/12/22)
+
+
+## Bug Fixes
+
+* resolve unexpected behavior ([5020052b](https://github.com/Samarium150/mirai-console-simple-echo/commits/5020052b))
 <a name="1.1.2"></a>
 # 1.1.2 (2021/12/22)
 
