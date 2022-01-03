@@ -1,4 +1,4 @@
-package io.github.samarium150.mirai.plugin
+package io.github.samarium150.mirai.plugin.echo
 
 import net.mamoe.mirai.console.MiraiConsole
 import net.mamoe.mirai.console.plugin.PluginManager.INSTANCE.enable

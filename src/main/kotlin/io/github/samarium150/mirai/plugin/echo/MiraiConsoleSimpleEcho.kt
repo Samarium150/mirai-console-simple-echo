@@ -1,7 +1,7 @@
-package io.github.samarium150.mirai.plugin
+package io.github.samarium150.mirai.plugin.echo
 
-import io.github.samarium150.mirai.plugin.config.PluginConfig
-import io.github.samarium150.mirai.plugin.data.Record
+import io.github.samarium150.mirai.plugin.echo.config.PluginConfig
+import io.github.samarium150.mirai.plugin.echo.data.Record
 import kotlinx.coroutines.CoroutineExceptionHandler
 import net.mamoe.mirai.console.command.CommandManager
 import net.mamoe.mirai.console.command.CommandSender.Companion.toCommandSender

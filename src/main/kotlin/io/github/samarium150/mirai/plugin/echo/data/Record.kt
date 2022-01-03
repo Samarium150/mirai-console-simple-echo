@@ -1,6 +1,6 @@
-package io.github.samarium150.mirai.plugin.data
+package io.github.samarium150.mirai.plugin.echo.data
 
-import io.github.samarium150.mirai.plugin.config.PluginConfig
+import io.github.samarium150.mirai.plugin.echo.config.PluginConfig
 
 val threshold = PluginConfig.threshold
 
