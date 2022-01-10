@@ -1,3 +1,15 @@
+<a name="1.1.4"></a>
+# 1.1.4 (2022/01/10)
+
+
+## Bug Fixes
+
+* avoid using globalEventChannel ([1bbdab6b](https://github.com/Samarium150/mirai-console-simple-echo/commits/1bbdab6b))
+
+## Refactor
+
+* rename package
+
 <a name="1.1.3"></a>
 # 1.1.3 (2021/12/22)
 
@@ -5,6 +17,7 @@
 ## Bug Fixes
 
 * resolve unexpected behavior ([5020052b](https://github.com/Samarium150/mirai-console-simple-echo/commits/5020052b))
+
 <a name="1.1.2"></a>
 # 1.1.2 (2021/12/22)
 
@@ -12,6 +25,7 @@
 ## Bug Fixes
 
 * skip echoing commands ([9c60ce5e](https://github.com/Samarium150/mirai-console-simple-echo/commits/9c60ce5e))
+
 <a name="1.1.1"></a>
 # 1.1.1 (2021/12/21)
 
@@ -19,6 +33,7 @@
 ## Refactor
 
 * rename plugin id
+
 <a name="1.1.0"></a>
 ## 1.1.0 (2021/12/15)
 
@@ -26,6 +41,7 @@
 ## Refactor
 
 * rename package
+
 <a name="1.0.1"></a>
 # 1.0.1 (2021/12/07)
 
@@ -33,6 +49,7 @@
 ## Bug Fixes
 
 * correctly clear counter ([349cbdac](https://github.com/Samarium150/mirai-console-simple-echo/commits/349cbdac))
+
 <a name="1.0.0"></a>
 ## 1.0.0 (2021/12/04)
 
