@@ -8,16 +8,16 @@ import net.mamoe.mirai.console.command.CommandSender.Companion.toCommandSender
 import net.mamoe.mirai.console.plugin.jvm.JvmPluginDescription
 import net.mamoe.mirai.console.plugin.jvm.KotlinPlugin
 import net.mamoe.mirai.event.EventPriority
+import net.mamoe.mirai.event.GlobalEventChannel
 import net.mamoe.mirai.event.Listener
 import net.mamoe.mirai.event.events.MessageEvent
-import net.mamoe.mirai.event.globalEventChannel
 import net.mamoe.mirai.message.data.contentsSequence
 
 object MiraiConsoleSimpleEcho : KotlinPlugin(
     JvmPluginDescription(
         id = "io.github.samarium150.mirai.plugin.mirai-console-simple-echo",
         name = "Simple Echo",
-        version = "1.1.3",
+        version = "1.1.4",
     ) {
         author("Samarium")
         info("简单复读插件")
@@ -30,7 +30,7 @@ object MiraiConsoleSimpleEcho : KotlinPlugin(
 
         PluginConfig.reload()
 
-        listener = globalEventChannel().subscribeAlways(
+        listener = GlobalEventChannel.parentScope(this).subscribeAlways(
             MessageEvent::class,
             CoroutineExceptionHandler { _, throwable ->
                 logger.error(throwable)
